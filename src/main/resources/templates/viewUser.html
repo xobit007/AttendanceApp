@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View User</title>
+</head>
+<body>
+	<div align="center">
+				
+		
+        <li th:each="item :${user}" style="list-style: none;">
+            <a th:href="@{/getReport/{userId}(userId=${item.userId})}" th:text="${item.username}"></a>
+        </li>
+  
+		
+		</br> </br> <input type="button" onclick="location.href='userLogin';"
+			value="Logout">
+	</div>
+</body>
+</html>

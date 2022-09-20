@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Report</title>
+</head>
+<body>
+	<div align="center">
+		<tr th:each="a: ${attendance}">
+			Date:&nbsp;<td th:text="${a.date}" /></br>
+			Sign In:&nbsp;<td th:text="${a.signInTime}" /></br>
+			Sign Out:&nbsp;<td th:text="${a.signOutTime}" /></br>
+			<h6>________________________________________</h6>
+			
+		</tr>
+		</br>
+		</br> 
+		<input type="button" onclick="location.href='/userLogin';" value="Logout">
+	</div>
+</body>
+</html>
+
+
+
+

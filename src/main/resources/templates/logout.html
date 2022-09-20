@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Logout</title>
+</head>
+<body>
+	<div align="center">
+		<h4>Signed out for the day</h4>
+		</br> </br> <a th:href="@{'/getReport/' + ${userId}}">View Report</a> </br> </br> <input
+			type="button" onclick="location.href='/userLogin';" value="Logout">
+	</div>
+
+</body>
+</html>
