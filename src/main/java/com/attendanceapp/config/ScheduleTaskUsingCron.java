@@ -5,8 +5,11 @@ import java.util.Iterator;
 
 import org.hibernate.query.criteria.internal.expression.function.CurrentDateFunction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import com.attendanceapp.repository.AttendanceRepository;
 import com.attendanceapp.repository.UserRepository;
@@ -14,6 +17,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 @Configuration
+@Component
+@EnableScheduling
 public class ScheduleTaskUsingCron {
 
 	@Autowired
@@ -22,7 +27,7 @@ public class ScheduleTaskUsingCron {
 	@Autowired
 	AttendanceRepository attendanceRepository;
 
-	@Scheduled(cron = "0 0 0 * * ? *")
+	@Scheduled(cron = "0 0 0 * * ?")
 	public void insertIntoAttendance() {
 		LocalDate dt = LocalDate.now();
 		DateTimeFormatter dft = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -36,7 +41,7 @@ public class ScheduleTaskUsingCron {
 		}
 	}
 	
-	@Scheduled(cron = "0 0 20 * * ? *")
+	@Scheduled(cron = "0 0 20 * * ?")
 	public void updateAttendanceIfAbsent() {
 		attendanceRepository.insertIntoAttendanceIfNull();
 	}

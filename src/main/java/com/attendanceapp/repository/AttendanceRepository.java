@@ -1,5 +1,7 @@
 package com.attendanceapp.repository;
 
+import java.util.ArrayList;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +14,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 	
 	
 	@Query(value = "select * from attendance where user_id=?", nativeQuery = true)
-	public Attendance findByUserId(int userId);
+	public ArrayList<Attendance> findByUserId(int userId);
 
 	@Modifying
 	@Transactional

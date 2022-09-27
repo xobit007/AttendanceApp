@@ -189,7 +189,7 @@ public class UserController {
 
 	@GetMapping("/getReport/{userId}")
 	public String userReport(@PathVariable("userId") int userId, Model m) {
-		Attendance attendance = attendanceRepository.findByUserId(userId);
+		ArrayList<Attendance> attendance = attendanceRepository.findByUserId(userId);
 		m.addAttribute("attendance", attendance);
 		return "getReport";
 	}
